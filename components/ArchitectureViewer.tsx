@@ -2,13 +2,8 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import ReactFlow, { 
-  Background, 
-  Controls, 
-  MiniMap,
-  Node,
-  Edge 
-} from 'react-flow-renderer'
+import { ReactFlow, Background, Controls, MiniMap, type Node, type Edge } from '@xyflow/react'
+import '@xyflow/react/dist/style.css'
 
 interface ArchitectureViewerProps {
   url: string
@@ -27,7 +22,6 @@ export default function ArchitectureViewer({ url }: ArchitectureViewerProps) {
     'External Services'
   ]
   
-  // Sample nodes (will be replaced with real data)
   const nodes: Node[] = [
     {
       id: '1',
@@ -57,7 +51,6 @@ export default function ArchitectureViewer({ url }: ArchitectureViewerProps) {
   
   return (
     <div className="w-full">
-      {/* Chapter Navigation */}
       <div className="flex overflow-x-auto pb-4 mb-6 space-x-2 no-scrollbar">
         {chapters.map((chapter, index) => (
           <motion.button
@@ -80,15 +73,12 @@ export default function ArchitectureViewer({ url }: ArchitectureViewerProps) {
         ))}
       </div>
       
-      {/* Main Visualization Area */}
       <div className="grid grid-cols-12 gap-6">
-        {/* Graph View */}
         <div className="col-span-8 glass-panel rounded-2xl p-4 h-[600px]">
           <ReactFlow
             nodes={nodes}
             edges={edges}
             fitView
-            className="bg-transparent"
           >
             <Background color="#ffffff10" gap={16} />
             <Controls className="bg-white/10 border-white/20" />
@@ -100,7 +90,6 @@ export default function ArchitectureViewer({ url }: ArchitectureViewerProps) {
           </ReactFlow>
         </div>
         
-        {/* Info Panel */}
         <div className="col-span-4 glass-panel rounded-2xl p-6 h-[600px] overflow-y-auto">
           <h3 className="text-xl font-bold mb-4 text-glow">
             Chapter {activeChapter + 1}: {chapters[activeChapter]}

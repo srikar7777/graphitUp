@@ -22,7 +22,6 @@ export default function ScanPhase({ progress, phase, url }: ScanPhaseProps) {
   ])
 
   useEffect(() => {
-    // Update discovered items based on progress
     const newDiscovered = [...discovered]
     const completedCount = Math.floor(progress / 12.5)
     
@@ -140,7 +139,7 @@ export default function ScanPhase({ progress, phase, url }: ScanPhaseProps) {
             animate={{ opacity: 1 }}
             className="text-cyan-400"
           >
-            > Initiating deep scan of {url}
+            {`> Initiating deep scan of ${url}`}
           </motion.p>
           {progress > 10 && (
             <motion.p 
@@ -148,7 +147,7 @@ export default function ScanPhase({ progress, phase, url }: ScanPhaseProps) {
               animate={{ opacity: 1 }}
               className="text-gray-400"
             >
-              > Resolving DNS records...
+              {`> Resolving DNS records...`}
             </motion.p>
           )}
           {progress > 25 && (
@@ -157,7 +156,7 @@ export default function ScanPhase({ progress, phase, url }: ScanPhaseProps) {
               animate={{ opacity: 1 }}
               className="text-gray-400"
             >
-              > Establishing TLS connection...
+              {`> Establishing TLS connection...`}
             </motion.p>
           )}
           {progress > 40 && (
@@ -166,7 +165,7 @@ export default function ScanPhase({ progress, phase, url }: ScanPhaseProps) {
               animate={{ opacity: 1 }}
               className="text-gray-400"
             >
-              > Detecting CDN provider...
+              {`> Detecting CDN provider...`}
             </motion.p>
           )}
           {progress > 55 && (
@@ -175,7 +174,7 @@ export default function ScanPhase({ progress, phase, url }: ScanPhaseProps) {
               animate={{ opacity: 1 }}
               className="text-gray-400"
             >
-              > Mapping API endpoints...
+              {`> Mapping API endpoints...`}
             </motion.p>
           )}
           {progress > 70 && (
@@ -184,7 +183,7 @@ export default function ScanPhase({ progress, phase, url }: ScanPhaseProps) {
               animate={{ opacity: 1 }}
               className="text-gray-400"
             >
-              > Identifying technologies...
+              {`> Identifying technologies...`}
             </motion.p>
           )}
           {progress > 85 && (
@@ -193,7 +192,7 @@ export default function ScanPhase({ progress, phase, url }: ScanPhaseProps) {
               animate={{ opacity: 1 }}
               className="text-gray-400"
             >
-              > Building architecture graph...
+              {`> Building architecture graph...`}
             </motion.p>
           )}
         </div>
