@@ -1,21 +1,12 @@
-FROM python:3.12-slim
+FROM mcr.microsoft.com/playwright/python:v1.40.0-jammy
 
 WORKDIR /app
-
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    wget \
-    gnupg \
-    && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements
 COPY requirements.txt .
 
 # Install python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Install Playwright browsers (Chromium only to save space/time)
-RUN playwright install --with-deps chromium
 
 # Copy app code
 COPY app/ ./app/
