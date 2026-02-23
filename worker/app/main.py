@@ -129,7 +129,7 @@ async def endpoint_ask_question(req: AskRequest):
         from .analyzers.inference import _build_context_document
 
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel("gemini-1.5-flash")
+        model = genai.GenerativeModel("gemini-1.5-flash-latest")
 
         context = _build_context_document(req.context)
 

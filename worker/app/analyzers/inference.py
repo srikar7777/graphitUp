@@ -85,7 +85,7 @@ def analyze_inference(scan_data: Dict[str, Any]) -> Dict[str, Any]:
     try:
         import google.generativeai as genai
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel("gemini-1.5-flash")
+        model = genai.GenerativeModel("gemini-1.5-flash-latest")
 
         context = _build_context_document(scan_data)
 

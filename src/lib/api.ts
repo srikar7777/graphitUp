@@ -28,12 +28,12 @@ export interface AskResponse {
 
 export const scanApi = {
     createScan: async (url: string): Promise<CreateScanResponse> => {
-        const { data } = await api.post<CreateScanResponse>('/scans', { url });
-        return data;
+        const { data } = await api.post<{ success: boolean; data: CreateScanResponse }>('/scans', { url });
+        return data.data;
     },
     getScan: async (id: string) => {
-        const { data } = await api.get(`/scans/${id}`);
-        return data;
+        const { data } = await api.get<{ success: boolean; data: any }>(`/scans/${id}`);
+        return data.data;
     },
 };
 
