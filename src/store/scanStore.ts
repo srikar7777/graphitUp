@@ -158,11 +158,11 @@ export const useScanStore = create<ScanState>((set, get) => ({
         socketService.joinScan(scanId);
 
         // Remove old listeners to prevent duplicates
-        socket.off('scanProgress');
-        socket.off('scanComplete');
-        socket.off('scanError');
+        socket.off('scan:progress');
+        socket.off('scan:complete');
+        socket.off('scan:error');
 
-        socket.on('scanProgress', (data: any) => {
+        socket.on('scan:progress', (data: any) => {
             set((state) => ({
                 progress: data.progress,
                 currentPhase: data.phase,
@@ -176,7 +176,7 @@ export const useScanStore = create<ScanState>((set, get) => ({
             }));
         });
 
-        socket.on('scanComplete', (data: any) => {
+        socket.on('scan:complete', (data: any) => {
             set((state) => ({
                 status: 'completed',
                 progress: 100,
@@ -193,7 +193,7 @@ export const useScanStore = create<ScanState>((set, get) => ({
             get().cleanupSocketListeners();
         });
 
-        socket.on('scanError', (data: any) => {
+        socket.on('scan:error', (data: any) => {
             set((state) => ({
                 status: 'failed',
                 error: data.error,
